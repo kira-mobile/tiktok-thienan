@@ -6,6 +6,7 @@
     padding: 9px 16px;
     border-radius: 4px;
     font-size: 1.6rem;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 700;
     cursor: pointer;
     background-color: var(--white);
@@ -29,14 +30,14 @@
 }
 
 .icon {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     width: 24px;
     text-align: center;
 }
 
 // Button type
 .rounded {
-    border-radius: 999px;
     box-shadow: 0 2px 8px rgba(0 0 0 / 6%);
     border-color: rgba(22, 24, 35, 0.12);
 
@@ -65,6 +66,10 @@
         border-color: currentColor;
         background-color: rgba(254, 44, 85, 0.06);
     }
+}
+
+.borderRadius {
+    border-radius: 999px;
 }
 
 .text {
