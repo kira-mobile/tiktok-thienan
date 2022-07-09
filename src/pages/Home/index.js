@@ -1,6 +1,8 @@
 function Home() {
     return (
-        <h2>Home pages</h2>
+        <h2 style={{
+            height: '2000px'
+        }}>Home pages</h2>
     );
 }
 

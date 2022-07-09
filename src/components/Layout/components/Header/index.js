@@ -1,8 +1,8 @@
 
 // Tooltips
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import {
     faCircleQuestion,
     faEarthAsia,
@@ -19,9 +19,10 @@ import styles from './Header.module.scss'
 import images from '~/assets/img';
 import Button from '~/components/Button';
 import Menu from '~/components/Proper/Menu';
-import { MailBoxIcon, MessageIcon, SearchIcon, UploadIcon } from '~/components/Icon';
+import { MailBoxIcon, MessageIcon, UploadIcon } from '~/components/Icon';
 import Image from '~/components/Image';
 import Search from '../Search';
+import routesConfig from '~/config/routes'
 const cx = classNames.bind(styles)
 
 const MENU_ITEMS = [
@@ -110,15 +111,24 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok" />
-
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt='Tiktok' />
+                </Link>
                 <Search />
 
                 {/* //* Nếu đăng nhập rồi thì render layout logined và ngược lại*/}
                 <div className={cx('action')}>
                     {currentUser ? (
                         <>
-                            <Button rounded leftIcon={<UploadIcon />} >Upload Video</Button>
+                            <Button
+                                rounded
+                                leftIcon={<UploadIcon />}
+                                style={{
+                                    boxShadow: 'none',
+                                    borderRadius: '2px',
+                                    marginRight: '10px',
+                                }}
+                            >Upload</Button>
 
                             <Tippy delay={[0, 50]} content='Message'>
                                 <button className={cx('action-btn')}>
@@ -142,7 +152,6 @@ function Header() {
                     <Menu
                         items={currentUser ? userMenu : MENU_ITEMS}
                         onChange={handleMenuChange}
-
                     >
                         {/* //* Nếu có user thì render avatar ko thì render menu 3 chấm */}
                         {currentUser ? (

@@ -11,7 +11,7 @@ import { useState } from 'react';
 const cx = classNames.bind(styles)
 const defaultFunc = () => { }
 
-function Menu({ children, items = [], onChange = defaultFunc }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFunc, }) {
 
     const [history, setHistory] = useState([{ data: items }])
 
@@ -38,15 +38,23 @@ function Menu({ children, items = [], onChange = defaultFunc }) {
             delay={[0, 700]}
             // visible
             offset={[12, 8]}
+            hideOnClick={hideOnClick}
             placement='bottom-end'
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <ProperWrapper className={cx('menu-proper')}>
                         {/* Nếu ở trang > 1 => hiện header */}
-                        {history.length > 1 && <Header title='Language' onBack={() => {
-                            setHistory(prev => prev.slice(0, prev.length - 1))
-                        }} />}
-                        {renderItems()}
+                        {history.length > 1 && (
+                            <Header
+                                title='Language'
+                                onBack={() => {
+                                    setHistory((prev) => prev.slice(0, prev.length - 1))
+                                }}
+                            />
+                        )}
+                        <div className={cx('menu-body')}>
+                            {renderItems()}
+                        </div>
                     </ProperWrapper>
                 </div>
             )}
