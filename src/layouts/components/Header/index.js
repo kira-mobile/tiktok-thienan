@@ -22,7 +22,7 @@ import Menu from '~/components/Proper/Menu';
 import { MailBoxIcon, MessageIcon, UploadIcon } from '~/components/Icon';
 import Image from '~/components/Image';
 import Search from '../Search';
-import routesConfig from '~/config/routes'
+import config from '~/config'
 const cx = classNames.bind(styles)
 
 const MENU_ITEMS = [
@@ -68,8 +68,6 @@ const MENU_ITEMS = [
 function Header() {
     const currentUser = true;
 
-
-
     // Handle Logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -111,9 +109,11 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo-link')}>
+                <Link to={config.routes.home} className={cx('logo-link')}>
                     <img src={images.logo} alt='Tiktok' />
                 </Link>
+
+
                 <Search />
 
                 {/* //* Nếu đăng nhập rồi thì render layout logined và ngược lại*/}
@@ -158,7 +158,7 @@ function Header() {
 
                             <Image
                                 className={cx('user-avatar')}
-                                src=''
+                                src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/68648fcada619418c7c2ced76ab1eff8~c5_720x720.jpeg?x-expires=1657548000&x-signature=6ZGVabYhFZlGjjxnsNHtWWdHef0%3D'
                                 alt='Nguyen Thien An'
                             // fallback=''
                             />

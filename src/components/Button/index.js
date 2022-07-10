@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from 'prop-types';
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import styles from './Button.module.scss'
@@ -72,6 +72,26 @@ function Button({
         </Comp>
 
     );
+}
+
+Button.propTypes = {
+    // *set type của props
+    to: PropTypes.string,
+    href: PropTypes.string,
+    primary: PropTypes.bool,
+    outline: PropTypes.bool,
+    text: PropTypes.bool,
+    rounded: PropTypes.bool,
+    disabled: PropTypes.bool,
+    small: PropTypes.bool,
+    large: PropTypes.bool,
+    borderRadius: PropTypes.string,
+    className: PropTypes.string,
+    // * PropTypes.node : giá trị có thể render , isRequired: luôn luôn được truyền
+    children: PropTypes.node.isRequired,
+    leftIcon: PropTypes.node,
+    rightIcon: PropTypes.node,
+    onClick: PropTypes.func,
 }
 
 export default Button;

@@ -15,7 +15,7 @@ import { SearchIcon } from '~/components/Icon';
 import { useDebounce } from '~/hooks';
 import { Wrapper as ProperWrapper } from '~/components/Proper';
 import AccountsItem from '~/components/AccountsItem';
-import * as searchService from '~/apiServices/searchService'
+import * as searchService from '~/services/searchService'
 const cx = classNames.bind(styles)
 
 function Search() {
@@ -24,11 +24,13 @@ function Search() {
     const [showResult, setShowResult] = useState(true)
     const [loading, setLoading] = useState(false)
 
-    // * Lần 1: '':  khi search chạy searchValue = '' => 
-    //*   searchValue được truyền vào tham số của useDebounce() => 
-    //*     debounced không thỏa điều kiện => không gọi API
-    //*  Lần 2: 'h': value = h được truyền vào useDebounce des thay đổi gọi lại hàm những vẫn return ra chuỗi lần trước
-    //*    nếu 800mls sau kh làm j thì value của setDebounced = h còn nếu tiếp tục gỡ thì value vẫn = ''
+    // *    Lần 1: '':  khi search chạy searchValue = '' => 
+    //* searchValue được truyền vào tham số của useDebounce() => 
+    //* debounced không thỏa điều kiện => không gọi API
+    //*     Lần 2: 'h': value = h được truyền vào useDebounce des thay đổi gọi lại hàm nhưng 
+    //* vẫn return ra chuỗi lần trước
+    //* nếu 800mls sau kh làm j thì value của setDebounced = h còn nếu tiếp tục gỡ thì 
+    //* value vẫn = ''
     const debouced = useDebounce(searchValue, 800)
 
     const inputRef = useRef()
@@ -73,7 +75,7 @@ function Search() {
 
 
     return (
-        // * Fix warning tippy
+        // * <div>...</div> => Fix warning tippy
         <div>
             <HeadlessTippy
                 interactive
