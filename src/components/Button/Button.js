@@ -15,7 +15,7 @@ function Button({
     disabled = false,
     small = false,
     large = false,
-    borderRadius = false,
+    upload = false,
     children,
     className,
     leftIcon,
@@ -60,7 +60,7 @@ function Button({
         disabled,
         small,
         large,
-        borderRadius,
+        upload,
     })
 
     return (

@@ -21,7 +21,7 @@ const cx = classNames.bind(styles)
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searcResult, setSearcResult] = useState([]);
-    const [showResult, setShowResult] = useState(true)
+    const [showResult, setShowResult] = useState(false)
     const [loading, setLoading] = useState(false)
 
     // *    Lần 1: '':  khi search chạy searchValue = '' => 
@@ -31,12 +31,12 @@ function Search() {
     //* vẫn return ra chuỗi lần trước
     //* nếu 800mls sau kh làm j thì value của setDebounced = h còn nếu tiếp tục gỡ thì 
     //* value vẫn = ''
-    const debouced = useDebounce(searchValue, 800)
+    const deboucedValue = useDebounce(searchValue, 800)
 
     const inputRef = useRef()
 
     useEffect(() => {
-        if (!debouced.trim()) {
+        if (!deboucedValue.trim()) {
             setSearcResult([])
             return;
         }
@@ -44,7 +44,7 @@ function Search() {
         // * Gọi Api từ searchService.js
         const fetchApi = async () => {
             setLoading(true)
-            const result = await searchService.search(debouced)
+            const result = await searchService.search(deboucedValue)
             setSearcResult(result)
 
             setLoading(false)
@@ -52,7 +52,7 @@ function Search() {
 
         fetchApi()
 
-    }, [debouced])
+    }, [deboucedValue])
 
     const handleClear = () => {
         setSearchValue('')

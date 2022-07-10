@@ -41,7 +41,18 @@
 .rounded {
     box-shadow: 0 2px 8px rgba(0 0 0 / 6%);
     border-color: rgba(22, 24, 35, 0.12);
+    border-radius: 999px;
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
 
+.upload {
+    box-shadow: none;
+    margin-right: 8px;
+    border-color: rgba(22, 24, 35, 0.12);
+    border-radius: 2px;
     &:hover {
         border-color: rgba(22, 24, 35, 0.2);
         background-color: rgba(22, 24, 35, 0.03);
@@ -67,10 +78,6 @@
         border-color: currentColor;
         background-color: rgba(254, 44, 85, 0.06);
     }
-}
-
-.borderRadius {
-    border-radius: 999px;
 }
 
 .text {

@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
     faEarthAsia,
-    faEllipsisVertical,
     faKeyboard,
     faUser,
     faGear,
@@ -19,7 +18,7 @@ import styles from './Header.module.scss'
 import images from '~/assets/img';
 import Button from '~/components/Button';
 import Menu from '~/components/Proper/Menu';
-import { MailBoxIcon, MessageIcon, UploadIcon } from '~/components/Icon';
+import { MailBoxIcon, MessageIcon, MoreIcon, UploadIcon } from '~/components/Icon';
 import Image from '~/components/Image';
 import Search from '../Search';
 import config from '~/config'
@@ -121,13 +120,8 @@ function Header() {
                     {currentUser ? (
                         <>
                             <Button
-                                rounded
+                                upload
                                 leftIcon={<UploadIcon />}
-                                style={{
-                                    boxShadow: 'none',
-                                    borderRadius: '2px',
-                                    marginRight: '10px',
-                                }}
                             >Upload</Button>
 
                             <Tippy delay={[0, 50]} content='Message'>
@@ -145,8 +139,12 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button text >Upload</Button>
-                            <Button primary>Log in</Button>
+                            <Button
+                                upload
+                                leftIcon={<UploadIcon />}
+                            >
+                                Upload</Button>
+                            <Button primary to='/t'>Log in</Button>
                         </>
                     )}
                     <Menu
@@ -165,7 +163,7 @@ function Header() {
                         ) : (
 
                             <button className={cx('more-btn')}>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                                <MoreIcon />
                             </button>
                         )}
                     </Menu>
