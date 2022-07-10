@@ -130,7 +130,7 @@ function Header() {
                                 </button>
                             </Tippy>
 
-                            <Tippy delay={[0, 50]} content='MailBox'>
+                            <Tippy delay={[0, 50]} content='Inbox'>
                                 <button className={cx('action-btn')}>
                                     <MailBoxIcon />
                                     <span className={cx('badge')}>12</span>
